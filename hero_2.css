@@ -1,6 +1,7 @@
 .hero_2 {
   width: 100vw;
   height: 60vh;
+  position: relative;
   /* background-color: #d1424295; */
 }
 
@@ -55,6 +56,8 @@
   align-items: center;
   margin-right: 78px;
   margin-top: -121px;
+  position: relative;
+  z-index: 700;
 }
 
 .about_container {
@@ -86,7 +89,7 @@
   border-radius: 50%;
   position: absolute;
   transform: translateY(100%);
-  z-index: 1;
+  z-index: 2;
   top: 0;
   left: 0;
   transition: transform 0.2s cubic-bezier(0.5, 0, 0.9, 0.9);;

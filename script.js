@@ -279,12 +279,13 @@ function downupGola(gola, btn) {
   let blue = document.querySelector(gola)
   let about_btn = document.querySelector(btn)
 
-  about_btn.addEventListener('mouseover', ()=>{
+  about_btn.addEventListener('mouseenter', ()=>{
       blue.style.opacity = 1;
       blue.style.transform = 'translateY(0%)'
   })
 
   about_btn.addEventListener('mouseleave', ()=>{
+    console.log(blue, about_btn);
     blue.style.transform = 'translateY(-100%)'
     setTimeout(()=>{
       blue.style.opacity = 0;
@@ -297,6 +298,7 @@ downupGola('.blue', '.about_container')
 downupGola('.blue_gola', '.contact_btn')
 downupGola('.oval1', '.mail_btn')
 downupGola('.oval2', '.phone_btn')
+downupGola('.blueHam', '.hamGola')
 
 
 
@@ -423,3 +425,74 @@ setInterval(() => {
   time[0].innerText= currentTime
   console.log("run")
 }, 1000);
+
+// -------------------------------- hamburger & slider --------------------------------
+
+document.addEventListener('DOMContentLoaded', () => {
+  let hamburger = document.querySelector('.hamburger');
+  let sliderMain = document.querySelector('.sliderMain');
+  let sliders = document.querySelector('.slider');
+  let hamGola = document.querySelector('.hamGola');
+  let navs = document.querySelector('.hero2');
+  let aboutvala = document.querySelector('.hero_2');
+  let slider = false
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY >= 700 && !slider) {
+      hamburger.style.display = "block";
+      hamburger.style.zIndex = 501
+      navs.style.zIndex = 500
+      sliders.style.zIndex = 400
+      aboutvala.style.zIndex = 500
+    } else {
+      hamburger.style.display = "none";
+      if(slider) {
+        aboutvala.style.zIndex = 400
+        navs.style.zIndex = 400
+        sliders.style.zIndex = 500
+      }
+    }
+  });
+
+
+  hamGola.addEventListener('click', () => {
+      hamburger.style.display = "none";
+      sliderMain.style.display = "flex";
+      hamburger.style.zIndex = 400
+      sliders.style.zIndex = 500
+      navs.style.zIndex = 400
+      aboutvala.style.zIndex = 400
+      slider = true
+  });
+
+  let X = document.querySelector('.X');
+  X.addEventListener('click', () => {
+    if (window.scrollY >= 700) {
+      hamburger.style.display = "block";
+    }
+    sliderMain.style.display = "none";
+    hamburger.style.zIndex = 501
+    navs.style.zIndex = 500
+    aboutvala.style.zIndex = 500
+    sliders.style.zIndex = 400
+    slider = false
+  })
+
+
+  let work = document.querySelector('.work');
+  let about = document.querySelector('.about');
+  let contact = document.querySelector('.contact');
+  
+  work.addEventListener('click', () => {
+    document.querySelector('#ProjectS').scrollIntoView({ behavior: 'smooth' });
+  });
+  
+  about.addEventListener('click', () => {
+    document.querySelector('#AboutS').scrollIntoView({ behavior: 'smooth' });
+  });
+  
+  contact.addEventListener('click', () => {
+    document.querySelector('#ContactS').scrollIntoView({ behavior: 'smooth' });
+  });
+});
+

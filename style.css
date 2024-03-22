@@ -86,7 +86,7 @@ body::-webkit-scrollbar {
   /* background-color: #b72d2d52; */
   margin-top: -100vh;
   position: relative;
-  z-index: 1;  
+  z-index: 500;  
   display: flex;
   flex-direction: column;
 }
@@ -154,6 +154,7 @@ body::-webkit-scrollbar {
   text-decoration: none;
   font-size: 20px;
   color: white;
+  cursor: pointer;
 }
 
 
