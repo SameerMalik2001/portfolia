@@ -1,0 +1,175 @@
+.hero_4 {
+  min-height: 100vh;
+  width: 100%;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* ----------------------------- projects ----------------------------------- */
+
+.project_heading {
+  display: inline-block;
+  align-self: flex-start;
+  margin-left: 5%;
+  font-weight: 100;
+}
+
+.project_line {
+  height: 1.5px;
+  margin-top: -20px;
+  width: 90%;
+  background-color: #97979790;
+}
+
+.projects {
+  width: 90%;
+  min-height: 300px;
+  /* background-color: gray; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: 30px;
+}
+
+/* ----------------------------- projects card ----------------------------------- */
+
+.card {
+  width: 400px;
+  min-height: 500px;
+  background-color: rgba(242, 242, 242);
+  color: rgb(53, 53, 53);
+  margin:20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;  
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.card:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  transform: scale(1.02);
+}
+
+
+.image {
+  width: 90%;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #0bb1119d;
+}
+
+.image > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content {
+  width: 90%;
+  min-height: 250px;
+  /* background-color: #0b98b19d; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content > p {
+  font-size: 19px;
+  padding: 10px 10px;
+  font-weight: 100;
+  text-align: justify;
+}
+
+.project_name {
+  width: 200%;
+  /* background-color: red; */
+}
+
+.project_name > h1 {
+  font-size: 17px;
+  color: rgb(53, 53, 53);
+}
+
+.base_container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.icons {
+  display: flex;
+  justify-content: end;
+  width: 90%;
+  margin-bottom: 20px;
+  align-items: center;
+  gap: 10px;
+  /* background-color: rgba(255, 0, 0, 0.504); */
+}
+
+.github {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.live {
+  width: 70px;
+  height: 25px;
+  cursor: pointer;
+}
+
+/* ----------------------------- ripple effects ----------------------------------- */
+
+.circle {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  background-color: yellowgreen;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: rippleAnimation 1s cubic-bezier(0.5, 0, 0.9, 0.9) forwards;
+}
+
+@keyframes rippleAnimation {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 0.7;
+  }
+
+  100% {
+    width: 5000px;
+    height: 5000px;
+    opacity: 1;
+  }
+}
+
+/* // NOTE: media  */
+@media (max-width: 1010px) and (min-width: 100px) {
+  .projects {
+    justify-content: center;
+  }
+}
+
+/* // NOTE: media  */
+@media (max-width: 440px) and (min-width: 200px) {
+  .card {
+    width: 280px;
+    min-height: 350px;
+  }
+}
+
+/* // NOTE: media  */
+@media (max-width: 200px) and (min-width: 100px) {
+  
+}

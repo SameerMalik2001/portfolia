@@ -1,0 +1,534 @@
+@font-face {
+  font-family: mainFont;
+  src: url('./NeueMontreal-Regular.ttf');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100%;
+  height: 100%;
+  font-family: mainFont;
+  overflow: hidden;
+}
+
+#main {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===================================Loader====================================== */
+
+.parda {
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+  transition: 0.5s cubic-bezier(0.3, 0, 1, 1);
+  display: flex;
+  justify-content: center;
+  color: white;
+  z-index: 1000;
+}
+
+.list {
+  position: absolute;
+  font-size: 2.8vw;
+  top: 40%;
+  display: flex;
+  align-items: center;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 40%;
+  margin-left: -20px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+/* -------------------------------hero section--------------------------------- */
+
+.hero {
+  height: 100vh;
+  width: 100vw;
+  background-color: #999d9e;
+}
+
+.hero1 {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.sameer {
+  width: 600px;
+  height: 100%;
+  padding-top: 50px;
+}
+
+
+.hero2 {
+  height: 100%;
+  width: 100%;
+  /* background-color: #b72d2d52; */
+  margin-top: -100vh;
+  position: relative;
+  z-index: 1;  
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------- nav  --------------------- */
+
+.nav {
+  width: 100vw;
+  height: 100px;
+  /* background-color: rgba(255, 0, 0, 0.379); */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 230px;
+  height: 100px;
+  padding: 35px 30px;
+  font-weight: 100;
+  color: white;
+  cursor: pointer;
+  /* background-color: #999d9e; */
+}
+
+.text1 {
+  font-weight: 400;
+}
+
+.text2 {
+  display: none;
+}
+
+.ok:hover .text2 {
+  font-weight: 400;
+  display: block;
+}
+
+.ok:hover .text1 {
+  display: none;
+}
+
+
+
+
+
+.options {
+  /* background-color: #f10a0a6a; */
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-right: 50px;
+  justify-content: center;
+  height: 100%;
+}
+
+.subO {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.subO > a {
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+}
+
+
+.adot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.work_dot, .about_dot, .contact_dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: white;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.work:hover + .work_dot{
+  opacity: 1;
+}
+.about:hover + .about_dot{
+  opacity: 1;
+}
+.contact:hover + .contact_dot{
+  opacity: 1;
+}
+
+
+.ham {
+  display: none;
+}
+
+
+/* -------------------------------location etc section--------------------------------- */
+
+
+.hero3 {
+  width: 100%;
+  display: flex;
+  height: calc(100% - 100px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --------------------- location --------------------- */
+.container2 {
+  width: 100%;
+  height: 400px;
+  margin-top: -130px;
+  /* background-color: rgba(28, 220, 60, 0.379); */
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.left {
+  width: 50%;
+  height: 400px;
+  /* background-color: rgba(28, 220, 60, 0.379); */
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+
+.location {
+  height: 100px;
+  width: 60vw;
+  /* background-color: rgba(188, 220, 28, 0.379); */
+  display: flex;
+  margin-top: 130px;
+}
+
+.location>h1 {
+  font-size: 16px;
+  color: white;
+  position: relative;
+  margin-top: 18px;
+  left: 43px;
+  z-index: 1;
+}
+
+.globe {
+  width: 50px;
+  height: 50px;
+  margin-top: 23px;
+  margin-left: -74px;
+  object-fit: contain;
+  /* background-color: #cc27278c; */
+}
+
+.loca {
+  width: 250px;
+  height: 100px;
+  margin-left: -68px;
+  object-fit: contain;
+  /* background-color: #cc27278c; */
+}
+
+
+
+
+/* --------------------- profession --------------------- */
+
+.right {
+  width: 50%;
+  height: 400px;
+  /* background-color: rgba(60, 0, 255, 0.379); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container1 {
+  width: 15vw;
+  height: 200px;
+  display: flex;
+  gap: 25px;
+  font-size: 20px;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  color: white;
+  /* background-color: #c3303086; */
+}
+
+.container1>span {
+  font-size: 40px;
+}
+
+.container1>h1 {
+  font-weight: 100;
+}
+
+/* --------------------- scrolling text --------------------- */
+
+.hero4 {
+  height: 235px;
+  width: 100vw;
+  /* background-color: #b72d2d52; */
+  margin-top: -32vh;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+
+.moving_text {
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.moving_text::-webkit-scrollbar {
+  display: none;
+}
+
+.con {
+  /* background-color: #de121283; */
+  display: inline-block;
+  animation: move 7.9s linear infinite;
+}
+
+.con > h1 {
+  display: inline-block;
+  font-size: 190px;
+  color: white;
+  margin-right: 40px;
+  font-weight: 100;
+}
+
+.con::-webkit-scrollbar {
+  display: none;
+}
+
+/* --------------------- media --------------------- */
+
+
+/* //NOTE: meida */
+@media (max-width: 700px) and (min-width:200px) {
+  /* ------------------hero4(scrolling text) -------------------- */
+  .hero4 {
+    height: 235px;
+    width: 100vw;
+    /* background-color: #b72d2d52; */
+    margin-top: -45vh;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+  }
+  
+  .moving_text {
+    white-space: nowrap;
+    overflow-x: auto;
+  }
+  
+  .moving_text::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .con {
+    /* background-color: #de121283; */
+    display: inline-block;
+    animation: move 13s linear infinite;
+  }
+  
+  .con > h1 {
+    display: inline-block;
+    font-size: 190px;
+    color: white;
+    margin-right: 40px;
+    font-weight: 100;
+  }
+
+  /* ------------------ location etc ------------------- */
+
+  .hero3 {
+    width: 100%;
+    display: flex;
+    align-items: end;
+    height: calc(100% - 100px);
+  }
+
+  .container2 {
+    flex-direction: row-reverse;
+  }
+
+  /* --------------------- location --------------------- */
+
+  .left {
+    width: 50%;
+    height: 400px;
+    /* background-color: rgba(28, 220, 60, 0.379); */
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+
+  .location {
+    height: 100px;
+    width: 60vw;
+    /* background-color: rgba(188, 220, 28, 0.379); */
+    display: flex;
+    margin-top: 300px;
+    justify-content: end;
+    margin-right: 20px;
+    align-items: center;
+  }
+
+  .location>h1 {
+    display: none;
+  }
+
+  .globe {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    /* background-color: #cc27278c; */
+  }
+
+  .loca {
+    display: none;
+  }
+
+
+  /* --------------------- profession --------------------- */
+
+  .right {
+    width: 50%;
+    height: 400px;
+    /* background-color: rgba(60, 0, 255, 0.379); */
+    display: flex;
+    align-items: end;
+    justify-content: start;
+  }
+
+  .container1 {
+    width: 15vw;
+    height: 100px;
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    color: white;
+    margin-left: 20px;
+    /* background-color: #c3303086; */
+    
+  }
+
+  .container1>span {
+    font-size: 20px;
+  }
+
+  .container1>h1 {
+    font-weight: 100;
+    font-size: 16px;
+  }
+
+}
+
+/* //NOTE: meida */
+@media (max-width:550px) and (min-width:100px) {
+  /* hero1 */
+  .sameer {
+    width: 300px;
+    padding-top: 70px;
+  }
+  .hero {
+    height: 85vh;
+  }
+
+  .logo {
+    font-size: 10px;
+  }
+
+  /* hero2  */
+  .hero2 {
+    height: 85vh;
+    margin-top: -85vh;
+  }
+  .subO {
+    display: none;
+  }
+  .ham {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+  .loca, .location>h1 {
+    display: none;
+  }
+
+  .ham>a {
+    font-size: 16px;
+  }
+
+  .hero4 {
+    margin-top: -56vh;
+  }
+  .con > h1 {
+    font-size: 140px;
+  }
+  .hero3 {
+    height: calc(100% - 100px - 15vh);
+    align-items: center;
+    margin-top: 150px;
+  }
+  .container1 {
+    margin-left: 30px;
+    margin-bottom: 30px;
+  }
+  .container1 >h1 {
+    font-size: 25px;
+  }
+  .container1>span {
+    font-size: 25px;
+  }
+  .globe {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+  }
+  
+}
+
+@keyframes move {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
