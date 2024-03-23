@@ -121,12 +121,17 @@ body::-webkit-scrollbar {
 .sameerdiv {
   width: 650px;
   height: 100%;
+  overflow: hidden;
   background-image: url('./hero1.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
   margin-top: 10%;
   /* background-color: red; */
+}
+
+.hero1::-webkit-scrollbar {
+  display: none;
 }
 
 @media (max-width:2720px) and (min-width: 1550px) {
