@@ -112,11 +112,11 @@ body::-webkit-scrollbar {
   overflow-x: hidden;
 }
 
-.sameer {
+/* .sameer {
   width: 600px;
   height: 100%;
   padding-top: 50px;
-}
+} */
 
 .sameerdiv {
   width: 650px;
@@ -229,6 +229,12 @@ body::-webkit-scrollbar {
   cursor: pointer;
 }
 
+.cv {
+  background-color: #246dff;
+  padding: 10px 10px;
+  border-radius: 5px;
+  color: rgb(255, 255, 255) !important;
+}
 
 .adot {
   width: 7px;
@@ -237,7 +243,7 @@ body::-webkit-scrollbar {
   background-color: white;
 }
 
-.work_dot, .about_dot, .contact_dot {
+.work_dot, .about_dot, .contact_dot, .cv_dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
@@ -252,6 +258,9 @@ body::-webkit-scrollbar {
   opacity: 1;
 }
 .contact:hover + .contact_dot{
+  opacity: 1;
+}
+.cv:hover + .cv_dot{
   opacity: 1;
 }
 
@@ -530,6 +539,21 @@ body::-webkit-scrollbar {
 
 }
 
+@media (max-width:750px) and (min-width:300px) {
+  .subO {
+    display: none;
+  }
+  .ham {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+  .ham>a {
+    font-size: 16px;
+  }
+}
+
 /* //NOTE: meida */
 @media (max-width:550px) and (min-width:100px) {
   /* hero1 */
@@ -550,22 +574,11 @@ body::-webkit-scrollbar {
     height: 85vh;
     margin-top: -85vh;
   }
-  .subO {
-    display: none;
-  }
-  .ham {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-  }
+  
   .loca, .location>h1 {
     display: none;
   }
 
-  .ham>a {
-    font-size: 16px;
-  }
 
   .hero4 {
     margin-top: -56vh;
