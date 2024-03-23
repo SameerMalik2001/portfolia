@@ -57,6 +57,18 @@ body::-webkit-scrollbar {
   background-color: white;
 }
 
+@media (max-width: 1920px)  and (min-width:1550px){
+  .list {
+    top: 47%;
+  }
+  .dot {
+    top: 43%;
+    margin-left: -20px;
+    width: 10px;
+    height: 10px;
+  }
+}
+
 @media (max-width: 1100px)  and (min-width:700px){
   .list {
     top: 47%;
