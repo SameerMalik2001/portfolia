@@ -5,7 +5,7 @@
   right: 20px;
   top: 20px;
   /* background-color: red; */
-  z-index: 500;
+  z-index: 800;
   display: none;
   animation: golate 0.5s cubic-bezier(0.5, 0, 0.9, 0.9);
 }
@@ -25,7 +25,8 @@
   cursor: pointer;
   height: 100%;
   border-radius: 50%;
-  background-color: rgb(13, 13, 39);
+  background-color: #1c212f;
+  border: 1px solid #283047;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -64,18 +65,24 @@
   right: 0px;
   top: 0px;
   /* background-color: red; */
-  z-index: 400;
-  display: flex;
+  z-index: 800;
+  display: none;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+
+@media (max-width: 400px) and (min-width: 300px) {
+  .slider {
+    width: 300px;
+  }
 }
 
 .sliderMain {
   height: 130vh;
   width: 100%;
   background-color: #14143a; 
-  display: none;
+  display: flex;
   animation: slider 0.3s linear;
   flex-direction: column;
   align-items: center;

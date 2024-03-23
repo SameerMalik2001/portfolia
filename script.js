@@ -285,7 +285,6 @@ function downupGola(gola, btn) {
   })
 
   about_btn.addEventListener('mouseleave', ()=>{
-    console.log(blue, about_btn);
     blue.style.transform = 'translateY(-100%)'
     setTimeout(()=>{
       blue.style.opacity = 0;
@@ -418,81 +417,115 @@ function gsapAnimation() {
 gsapAnimation()
 
 
-
-setInterval(() => {
-  const currentTime = new Date().toLocaleTimeString('en-US', {timeZone: 'Asia/Kolkata', hour: '2-digit', minute:'2-digit', hour12: true});
+const worker = new Worker('worker.js')
+worker.onmessage = (e) => {
   let time = document.getElementsByClassName('time');
-  time[0].innerText= currentTime
-  console.log("run")
-}, 1000);
+  time[0].innerText= e.data
+}
 
 // -------------------------------- hamburger & slider --------------------------------
 
-document.addEventListener('DOMContentLoaded', () => {
-  let hamburger = document.querySelector('.hamburger');
-  let sliderMain = document.querySelector('.sliderMain');
-  let sliders = document.querySelector('.slider');
-  let hamGola = document.querySelector('.hamGola');
-  let navs = document.querySelector('.hero2');
-  let aboutvala = document.querySelector('.hero_2');
-  let slider = false
+if(window.innerWidth > 900) {
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY >= 700 && !slider) {
-      hamburger.style.display = "block";
-      hamburger.style.zIndex = 501
-      navs.style.zIndex = 500
-      sliders.style.zIndex = 400
-      aboutvala.style.zIndex = 500
-    } else {
-      hamburger.style.display = "none";
-      if(slider) {
-        aboutvala.style.zIndex = 400
-        navs.style.zIndex = 400
-        sliders.style.zIndex = 500
+  document.addEventListener('DOMContentLoaded', () => {
+    let hamburger = document.querySelector('.hamburger');
+    let sliders = document.querySelector('.slider');
+    let hamGola = document.querySelector('.hamGola');
+    let slider = false
+  
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 700) {
+        if(!slider) {
+          hamburger.style.display = "block"
+        } else {
+          hamburger.style.display = "none"
+        }
+      } else {
+          hamburger.style.display = "none"
       }
+  
+      if(window.innerWidth < 900) {
+        hamburger.style.display = "none"
+      }
+    });
+  
+  
+    hamGola.addEventListener('click', () => {
+        sliders.style.display = "flex";
+        hamburger.style.display = "none";
+        slider = true;
+    });
+  
+  
+  
+    let work = document.querySelector('.work');
+    let about = document.querySelector('.about');
+    let contact = document.querySelector('.contact');
+    
+    work.addEventListener('click', () => {
+      document.querySelector('#ProjectS').scrollIntoView({ behavior: 'smooth' });
+    });
+    
+    about.addEventListener('click', () => {
+      document.querySelector('#AboutS').scrollIntoView({ behavior: 'smooth' });
+    });
+    
+    contact.addEventListener('click', () => {
+      document.querySelector('#ContactS').scrollIntoView({ behavior: 'smooth' });
+    });
+  
+    let p = document.querySelectorAll('.p')
+    for (let i = 0; i < p.length; i++) {
+      p[i].addEventListener('click', () => {
+        setTimeout(() =>{
+          slider = false;
+          sliders.style.display = "none";
+          if(window.scrollY > 700) {
+            hamburger.style.display = "block";
+          }
+        }, 300)
+      })
     }
+  
+    let X = document.querySelector('.X');
+    X.addEventListener('click', () => {
+      slider = false;
+      sliders.style.display = "none";
+      if(window.scrollY > 700) {
+        hamburger.style.display = "block";
+      }
+    })
+  
   });
+}
 
 
-  hamGola.addEventListener('click', () => {
-      hamburger.style.display = "none";
-      sliderMain.style.display = "flex";
-      hamburger.style.zIndex = 400
-      sliders.style.zIndex = 500
-      navs.style.zIndex = 400
-      aboutvala.style.zIndex = 400
-      slider = true
-  });
+document.addEventListener('DOMContentLoaded',() => {
+  let menu = document.querySelector('.ham')
+  let slider = document.querySelector('.slider')
+  let sliderOpen = false
+
+  menu.addEventListener('click', () => {
+    if(!sliderOpen) {
+      slider.style.display = "flex";
+      sliderOpen = true;
+    }
+  })
+
+  let p = document.querySelectorAll('.p')
+  for (let i = 0; i < p.length; i++) {
+    p[i].addEventListener('click', () => {
+      setTimeout(() =>{
+        sliderOpen = false;
+        slider.style.display = "none";
+      }, 300)
+    })
+  }
 
   let X = document.querySelector('.X');
   X.addEventListener('click', () => {
-    if (window.scrollY >= 700) {
-      hamburger.style.display = "block";
-    }
-    sliderMain.style.display = "none";
-    hamburger.style.zIndex = 501
-    navs.style.zIndex = 500
-    aboutvala.style.zIndex = 500
-    sliders.style.zIndex = 400
-    slider = false
+    sliderOpen = false;
+    slider.style.display = "none";
   })
 
-
-  let work = document.querySelector('.work');
-  let about = document.querySelector('.about');
-  let contact = document.querySelector('.contact');
-  
-  work.addEventListener('click', () => {
-    document.querySelector('#ProjectS').scrollIntoView({ behavior: 'smooth' });
-  });
-  
-  about.addEventListener('click', () => {
-    document.querySelector('#AboutS').scrollIntoView({ behavior: 'smooth' });
-  });
-  
-  contact.addEventListener('click', () => {
-    document.querySelector('#ContactS').scrollIntoView({ behavior: 'smooth' });
-  });
-});
-
+})

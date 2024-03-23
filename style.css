@@ -44,6 +44,7 @@ body::-webkit-scrollbar {
   top: 40%;
   display: flex;
   align-items: center;
+  /* justify-content: center; */
 }
 
 .dot {
@@ -54,6 +55,44 @@ body::-webkit-scrollbar {
   margin-left: -20px;
   border-radius: 50%;
   background-color: white;
+}
+
+@media (max-width: 1100px)  and (min-width:700px){
+  .list {
+    top: 47%;
+  }
+  .dot {
+    top: 43%;
+    margin-left: -20px;
+    width: 7px;
+    height: 7px;
+  }
+}
+
+@media (max-width: 700px)  and (min-width:500px){
+  .list {
+    top: 47%;
+    font-size: 4vw;
+  }
+  .dot {
+    top: 43%;
+    margin-left: -20px;
+    width: 7px;
+    height: 7px;
+  }
+}
+
+@media (max-width: 500px)  and (min-width:300px){
+  .list {
+    top: 47%;
+    font-size: 6vw;
+  }
+  .dot {
+    top: 43%;
+    margin-left: -20px;
+    width: 7px;
+    height: 7px;
+  }
 }
 
 /* -------------------------------hero section--------------------------------- */
@@ -77,6 +116,16 @@ body::-webkit-scrollbar {
   width: 600px;
   height: 100%;
   padding-top: 50px;
+}
+
+.sameerdiv {
+  width: 650px;
+  height: 100%;
+  background-image: url('./hero.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+  /* background-color: red; */
 }
 
 
@@ -533,3 +582,4 @@ body::-webkit-scrollbar {
     transform: translateX(-100%);
   }
 }
+
