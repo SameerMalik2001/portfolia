@@ -1,46 +1,59 @@
 gsap.registerPlugin(ScrollTrigger);
 
-function loader () {
-  
-  const pardas = document.querySelector('.parda');
-  pardas.setAttribute('width', window.screen.width);
+function loader() {
+  const pardas = document.querySelector(".parda");
+  pardas.setAttribute("width", window.screen.width);
 
   function injectSVG(pardaElement) {
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    let w = window.screen.width
-    let h = window.screen.height + window.screen.height / 3.33
-    svg.setAttribute('width', w);
-    svg.setAttribute('height', h);
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    let w = window.screen.width;
+    let h = window.screen.height + window.screen.height / 3.33;
+    svg.setAttribute("width", w);
+    svg.setAttribute("height", h);
 
-
-    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
     // path.setAttribute('d', 'M 0 20 C 50 0 150 0 200 20 L 200 80 C 150 100 50 100 0 80 Z');
-    path.setAttribute('d', `M 0 ${h/10} C ${w/4} 0 ${(w*3)/4} 0 ${w} ${h/10} L ${w} ${h - h/10}
-                        C ${(w*3)/4} ${h} ${w/4} ${h} 0 ${h - h/10} Z`);
-    path.setAttribute('fill', 'black');
-    pardas.style.top = -(window.screen.height / 3.33) / 2 + 'px';
+    path.setAttribute(
+      "d",
+      `M 0 ${h / 10} C ${w / 4} 0 ${(w * 3) / 4} 0 ${w} ${h / 10} L ${w} ${
+        h - h / 10
+      }
+                        C ${(w * 3) / 4} ${h} ${w / 4} ${h} 0 ${h - h / 10} Z`
+    );
+    path.setAttribute("fill", "black");
+    pardas.style.top = -(window.screen.height / 3.33) / 2 + "px";
 
     svg.appendChild(path);
 
     pardaElement.appendChild(svg);
   }
 
-  injectSVG(pardas)
+  injectSVG(pardas);
 
-  setTimeout(()=>{
-    pardas.style.top = (-1*(window.screen.height + window.screen.height / 3.33))+"px";
+  setTimeout(() => {
+    pardas.style.top =
+      -1 * (window.screen.height + window.screen.height / 3.33) + "px";
     let body = document.querySelector("body");
     body.style.overflow = "initial";
   }, 3400);
 
-  let lists = ["Hello", "Hola",'Привет' ,"こんにちは", "Ciao", "Hallo", "Bonjour", "नमस्ते", "مرحبا"]
-  let container = document.createElement('h1');
+  let lists = [
+    "Hello",
+    "Hola",
+    "Привет",
+    "こんにちは",
+    "Ciao",
+    "Hallo",
+    "Bonjour",
+    "नमस्ते",
+    "مرحبا",
+  ];
+  let container = document.createElement("h1");
 
-  let dot = document.createElement('div');
-  dot.classList.add('dot');
+  let dot = document.createElement("div");
+  dot.classList.add("dot");
 
-  container.classList.add('list');
-
+  container.classList.add("list");
 
   function print123() {
     let count = 0;
@@ -49,7 +62,7 @@ function loader () {
         clearInterval(interval);
       }
       container.innerText = lists[count];
-      container.appendChild(dot)
+      container.appendChild(dot);
       pardas.appendChild(container);
       count++;
     }, 1000);
@@ -59,7 +72,7 @@ function loader () {
     let count = 1;
     const interval = setInterval(() => {
       container.innerText = lists[count];
-      container.appendChild(dot)
+      container.appendChild(dot);
       pardas.appendChild(container);
       count++;
       if (count > 8) {
@@ -75,65 +88,91 @@ function loader () {
         clearInterval(interval);
       }
       container.innerText = lists[count];
-      container.appendChild(dot)
+      container.appendChild(dot);
       pardas.appendChild(container);
       count++;
     }, 1000);
   }
 
   print123();
-  setTimeout(print4567, 1200); 
+  setTimeout(print4567, 1200);
   setTimeout(print8910, 2600);
+}
+loader();
 
+window.addEventListener("beforeunload", () => {
+  window.scrollTo(0, 0);
+});
+
+let con = document.querySelectorAll(".con");
+for (let i = 0; i < con.length; i++) {
+  con[i].addEventListener("selectstart", function (e) {
+    e.preventDefault();
+  });
 }
 
-loader()
+function downupGola(gola, btn) {
+  let blue = document.querySelector(gola);
+  let about_btn = document.querySelector(btn);
 
+  about_btn.addEventListener("mouseenter", () => {
+    blue.style.opacity = 1;
+    blue.style.transform = "translateY(0%)";
+  });
 
-window.addEventListener('beforeunload', ()=>{
-  window.scrollTo(0,0);
-})
+  about_btn.addEventListener("mouseleave", () => {
+    blue.style.transform = "translateY(-100%)";
+    setTimeout(() => {
+      blue.style.opacity = 0;
+      blue.style.transform = "translateY(100%)";
+    }, 200);
+  });
+}
 
-var hoverMouseForLowerElement = function(els) {
-  els.forEach(function(el) {
+downupGola(".blue", ".about_container");
+downupGola(".blue_gola", ".contact_btn");
+downupGola(".oval1", ".mail_btn");
+downupGola(".oval2", ".phone_btn");
+downupGola(".blueHam", ".hamGola");
+
+var hoverMouseForLowerElement = function (els) {
+  els.forEach(function (el) {
     var self = el;
     var hover = false;
     var offsetHoverMax = self.getAttribute("offset-hover-max") || 0.23;
     var offsetHoverMin = self.getAttribute("offset-hover-min") || 0.2;
 
-    var attachEventsListener = function() {
-      window.addEventListener("mousemove", function(e) {
+    var attachEventsListener = function () {
+      window.addEventListener("mousemove", function (e) {
         var hoverArea = hover ? offsetHoverMax : offsetHoverMin;
 
         // Cursor
         var cursor = {
           x: e.clientX,
-          y: e.clientY
+          y: e.clientY,
         };
-        
+
         // Size of element
         var width = self.offsetWidth;
         var height = self.offsetHeight;
-        
+
         // Position of centroid of element
         var rect = self.getBoundingClientRect();
         var elPos = {
           x: rect.left + width / 2.5,
-          y: rect.top + height / 2
+          y: rect.top + height / 2,
         };
 
-        
         // Comparison || detecting the mouse position that it is hovering over elements or not if x = 0 and y = 0 menas hovering
         var x = cursor.x - elPos.x;
         var y = cursor.y - elPos.y;
-        
-        
+
         // Distance btw the mouse position and element position
         var dist = Math.sqrt(x * x + y * y);
-        
+
         // Mutex hover
         var mutHover = false;
-        
+
         // Animation
         if (dist < width * hoverArea) {
           mutHover = true;
@@ -152,23 +191,23 @@ var hoverMouseForLowerElement = function(els) {
     };
     //func end
 
-    var onHover = function(x, y) {
+    var onHover = function (x, y) {
       TweenMax.to(self, 0.4, {
         x: x * 0.8,
         y: y * 0.8,
         //scale: .9,
         rotation: x * 0.05,
-        ease: Power2.easeOut
+        ease: Power2.easeOut,
       });
     };
 
-    var onLeave = function() {
+    var onLeave = function () {
       TweenMax.to(self, 0.7, {
         x: 0,
         y: 0,
         scale: 1,
         rotation: 0,
-        ease: Elastic.easeOut.config(1.2, 0.4)
+        ease: Elastic.easeOut.config(1.2, 0.4),
       });
     };
 
@@ -176,52 +215,48 @@ var hoverMouseForLowerElement = function(els) {
   });
 };
 
-hoverMouseForLowerElement(Array.from(document.querySelectorAll('.magneticL')));
+hoverMouseForLowerElement(Array.from(document.querySelectorAll(".magneticL")));
 
-
-var hoverMouse = function(els) {
-  els.forEach(function(el) {
+var hoverMouse = function (els) {
+  els.forEach(function (el) {
     var self = el;
     var hover = false;
     var offsetHoverMax = self.getAttribute("offset-hover-max") || 0.23;
     var offsetHoverMin = self.getAttribute("offset-hover-min") || 0.2;
 
-    var attachEventsListener = function() {
-      window.addEventListener("mousemove", function(e) {
+    var attachEventsListener = function () {
+      window.addEventListener("mousemove", function (e) {
         var hoverArea = hover ? offsetHoverMax : offsetHoverMin;
 
         // Cursor
         var cursor = {
           x: e.clientX,
-          y: e.clientY - window.scrollY
+          y: e.clientY - window.scrollY,
         };
-      
-        
+
         // Size of element
         var width = self.offsetWidth;
         var height = self.offsetHeight;
-        
+
         // Position of centroid of element
         var rect = self.getBoundingClientRect();
         var elPos = {
           x: rect.left + width / 2.5,
-          y: rect.top + height / 2
+          y: rect.top + height / 2,
         };
 
-        
         // Comparison || detecting the mouse position that it is hovering over elements or not if x = 0 and y = 0 menas hovering
         var x = cursor.x - elPos.x;
         var y = cursor.y - elPos.y;
-        
-        
+
         // Distance btw the mouse position and element position
         var dist = Math.sqrt(x * x + y * y);
 
         // console.log(dist);
-        
+
         // Mutex hover
         var mutHover = false;
-        
+
         // Animation
         if (dist < width * hoverArea) {
           mutHover = true;
@@ -240,23 +275,23 @@ var hoverMouse = function(els) {
     };
     //func end
 
-    var onHover = function(x, y) {
+    var onHover = function (x, y) {
       TweenMax.to(self, 0.4, {
         x: x * 0.8,
         y: y * 0.8,
         //scale: .9,
         rotation: x * 0.05,
-        ease: Power2.easeOut
+        ease: Power2.easeOut,
       });
     };
 
-    var onLeave = function() {
+    var onLeave = function () {
       TweenMax.to(self, 0.7, {
         x: 0,
         y: 0,
         scale: 1,
         rotation: 0,
-        ease: Elastic.easeOut.config(1.2, 0.4)
+        ease: Elastic.easeOut.config(1.2, 0.4),
       });
     };
 
@@ -264,42 +299,7 @@ var hoverMouse = function(els) {
   });
 };
 
-hoverMouse(Array.from(document.querySelectorAll('.magnetic')));
-
-
-let con = document.querySelectorAll('.con');
-for (let i = 0; i < con.length ;i++) {
-  con[i].addEventListener('selectstart', function(e) {
-    e.preventDefault();
-  })
-}
-
-
-function downupGola(gola, btn) {
-  let blue = document.querySelector(gola)
-  let about_btn = document.querySelector(btn)
-
-  about_btn.addEventListener('mouseenter', ()=>{
-      blue.style.opacity = 1;
-      blue.style.transform = 'translateY(0%)'
-  })
-
-  about_btn.addEventListener('mouseleave', ()=>{
-    blue.style.transform = 'translateY(-100%)'
-    setTimeout(()=>{
-      blue.style.opacity = 0;
-      blue.style.transform = 'translateY(100%)'
-    },200)
-  })
-}
-
-downupGola('.blue', '.about_container')
-downupGola('.blue_gola', '.contact_btn')
-downupGola('.oval1', '.mail_btn')
-downupGola('.oval2', '.phone_btn')
-downupGola('.blueHam', '.hamGola')
-
-
+hoverMouse(Array.from(document.querySelectorAll(".magnetic")));
 
 // -------------------------------- scrolling about textarea --------------------------------
 window.addEventListener("load", function () {
@@ -315,7 +315,8 @@ window.addEventListener("load", function () {
             ${wordsArr
               .map(
                 (word) => `${word.outerHTML}<span class="whitespace"></span>`
-              ).join(" ")}
+              )
+              .join(" ")}
           </div>
         </span>`
       )
@@ -323,209 +324,203 @@ window.addEventListener("load", function () {
     splitResult.el.innerHTML = wrappedLines;
   });
 
-
   let revealLines = revealText.forEach((element) => {
     const lines = element.querySelectorAll(".line .words");
 
     let tl = gsap.timeline({
       scrollTrigger: {
         trigger: element,
-	      toggleActions:"restart none none reset",
-      }
+        toggleActions: "restart none none reset",
+      },
     });
     tl.set(revealText, { autoAlpha: 1 });
     tl.from(lines, 0.7, {
       yPercent: 100,
       ease: Power3.out,
       stagger: 0.05,
-      delay: 0.05
+      delay: 0.05,
     });
   });
 });
 
 // -------------------------------- scrolling my image --------------------------------
 
-setTimeout(()=>{
-  gsap.from('.hero4, .hero1',{
-    y:150,
-    opacity:0,
-    duration:.6,
-    smooth:true
-  })
-}, 3450)
-
+setTimeout(() => {
+  gsap.from(".hero4, .hero1", {
+    y: 150,
+    opacity: 0,
+    duration: 0.6,
+    smooth: true,
+  });
+}, 3450);
 
 function gsapAnimation() {
   let tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".hero_3",
-      toggleActions:"restart none none reset",
-    }
+      toggleActions: "restart none none reset",
+    },
   });
-  tl.from('.skill_heading, .skill_line, .moving_skills',{
-    y:70,
-    opacity:0,
-    stagger:0.05,
-    duration:.4,
-    smooth:true
-  })
-  
+  tl.from(".skill_heading, .skill_line, .moving_skills", {
+    y: 70,
+    opacity: 0,
+    stagger: 0.05,
+    duration: 0.4,
+    smooth: true,
+  });
+
   let t2 = gsap.timeline({
     scrollTrigger: {
       trigger: ".hero_4",
-      toggleActions:"restart none none reset",
-    }
+      toggleActions: "restart none none reset",
+    },
   });
 
-  t2.from('.project_heading, .project_line',{
-    y:70,
-    opacity:0,
-    stagger:0.05,
-    duration:.4,
-    smooth:true
-  })
-  
-  t2.from('.card1, .card2, .card3',{
-    y:70,
-    opacity:0,
-    stagger:0.05,
-    duration:.40,
-    smooth:true
-  })
-  t2.from('.card4, .card5',{
-    y:70,
-    opacity:0,
-    stagger:0.05,
-    duration:.40,
-    smooth:true
-  })
+  t2.from(".project_heading, .project_line", {
+    y: 70,
+    opacity: 0,
+    stagger: 0.05,
+    duration: 0.4,
+    smooth: true,
+  });
+
+  t2.from(".card1, .card2, .card3", {
+    y: 70,
+    opacity: 0,
+    stagger: 0.05,
+    duration: 0.4,
+    smooth: true,
+  });
+  t2.from(".card4, .card5", {
+    y: 70,
+    opacity: 0,
+    stagger: 0.05,
+    duration: 0.4,
+    smooth: true,
+  });
 
   let t3 = gsap.timeline({
     scrollTrigger: {
       trigger: ".hero_5",
-      toggleActions:"restart none none reset",
-    }
+      toggleActions: "restart none none reset",
+    },
   });
 
-  t3.from('.contact_btn',{
-    x:-100,
-    opacity:0,
-    duration:.5,
-    smooth:true
-  })
+  t3.from(".contact_btn", {
+    x: -100,
+    opacity: 0,
+    duration: 0.5,
+    smooth: true,
+  });
 }
-gsapAnimation()
+gsapAnimation();
 
-
-const worker = new Worker('worker.js')
+const worker = new Worker("worker.js");
 worker.onmessage = (e) => {
-  let time = document.getElementsByClassName('time');
-  time[0].innerText= e.data
-}
+  let time = document.getElementsByClassName("time");
+  time[0].innerText = e.data;
+};
 
 // -------------------------------- hamburger & slider --------------------------------
 
-if(window.innerWidth > 900) {
+if (window.innerWidth > 900) {
+  document.addEventListener("DOMContentLoaded", () => {
+    let hamburger = document.querySelector(".hamburger");
+    let sliders = document.querySelector(".slider");
+    let hamGola = document.querySelector(".hamGola");
+    let slider = false;
 
-  document.addEventListener('DOMContentLoaded', () => {
-    let hamburger = document.querySelector('.hamburger');
-    let sliders = document.querySelector('.slider');
-    let hamGola = document.querySelector('.hamGola');
-    let slider = false
-  
-    window.addEventListener('scroll', () => {
-      if(window.scrollY > 700) {
-        if(!slider) {
-          hamburger.style.display = "block"
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 700) {
+        if (!slider) {
+          hamburger.style.display = "block";
         } else {
-          hamburger.style.display = "none"
+          hamburger.style.display = "none";
         }
       } else {
-          hamburger.style.display = "none"
-      }
-  
-      if(window.innerWidth < 900) {
-        hamburger.style.display = "none"
-      }
-    });
-  
-  
-    hamGola.addEventListener('click', () => {
-        sliders.style.display = "flex";
         hamburger.style.display = "none";
-        slider = true;
+      }
+
+      if (window.innerWidth < 900) {
+        hamburger.style.display = "none";
+      }
     });
-  
-  
-  
-    let work = document.querySelector('.work');
-    let about = document.querySelector('.about');
-    let contact = document.querySelector('.contact');
-    
-    work.addEventListener('click', () => {
-      document.querySelector('#ProjectS').scrollIntoView({ behavior: 'smooth' });
+
+    hamGola.addEventListener("click", () => {
+      sliders.style.display = "flex";
+      hamburger.style.display = "none";
+      slider = true;
     });
-    
-    about.addEventListener('click', () => {
-      document.querySelector('#AboutS').scrollIntoView({ behavior: 'smooth' });
+
+    let work = document.querySelector(".work");
+    let about = document.querySelector(".about");
+    let contact = document.querySelector(".contact");
+
+    work.addEventListener("click", () => {
+      document
+        .querySelector("#ProjectS")
+        .scrollIntoView({ behavior: "smooth" });
     });
-    
-    contact.addEventListener('click', () => {
-      document.querySelector('#ContactS').scrollIntoView({ behavior: 'smooth' });
+
+    about.addEventListener("click", () => {
+      document.querySelector("#AboutS").scrollIntoView({ behavior: "smooth" });
     });
-  
-    let p = document.querySelectorAll('.p')
+
+    contact.addEventListener("click", () => {
+      document
+        .querySelector("#ContactS")
+        .scrollIntoView({ behavior: "smooth" });
+    });
+
+    let p = document.querySelectorAll(".p");
     for (let i = 0; i < p.length; i++) {
-      p[i].addEventListener('click', () => {
-        setTimeout(() =>{
+      p[i].addEventListener("click", () => {
+        setTimeout(() => {
           slider = false;
           sliders.style.display = "none";
-          if(window.scrollY > 700) {
+          if (window.scrollY > 700) {
             hamburger.style.display = "block";
           }
-        }, 300)
-      })
+        }, 300);
+      });
     }
-  
-    let X = document.querySelector('.X');
-    X.addEventListener('click', () => {
+
+    let X = document.querySelector(".X");
+    X.addEventListener("click", () => {
       slider = false;
       sliders.style.display = "none";
-      if(window.scrollY > 700) {
+      if (window.scrollY > 700) {
         hamburger.style.display = "block";
       }
-    })
-  
+    });
   });
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  let menu = document.querySelector(".ham");
+  let slider = document.querySelector(".slider");
+  let sliderOpen = false;
 
-document.addEventListener('DOMContentLoaded',() => {
-  let menu = document.querySelector('.ham')
-  let slider = document.querySelector('.slider')
-  let sliderOpen = false
-
-  menu.addEventListener('click', () => {
-    if(!sliderOpen) {
+  menu.addEventListener("click", () => {
+    if (!sliderOpen) {
       slider.style.display = "flex";
       sliderOpen = true;
     }
-  })
+  });
 
-  let p = document.querySelectorAll('.p')
+  let p = document.querySelectorAll(".p");
   for (let i = 0; i < p.length; i++) {
-    p[i].addEventListener('click', () => {
-      setTimeout(() =>{
+    p[i].addEventListener("click", () => {
+      setTimeout(() => {
         sliderOpen = false;
         slider.style.display = "none";
-      }, 300)
-    })
+      }, 300);
+    });
   }
 
-  let X = document.querySelector('.X');
-  X.addEventListener('click', () => {
+  let X = document.querySelector(".X");
+  X.addEventListener("click", () => {
     sliderOpen = false;
     slider.style.display = "none";
-  })
-
-})
+  });
+});
